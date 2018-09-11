@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Shop page";
+}
+@model IEnumerable<Product>
+
+<div class="col-md-11">
+    @foreach (var p in Model)
+    {
+        <div class="col-md-3 h-100">
+            <div class="well well-sm">
+                <img src="~/img/@(p.DoorId).jpg" class="img-responsive" alt="@p.Title" />
+                <h3 style="text-align:center">@p.Title</h3>
+                <p style="text-align:center; font-size:smaller;">@p.Category</p>
+                <ul>
+                    <li>Manufacturer: @p.Manufacturer</li>
+                    <li>
+                        @if (p.DoorDescription == null)
+                        {<text>No description</text>}
+                        else
+                        { <text>@p.DoorDescription</text>}
+                    </li>
+                    <li>Size: @p.Size</li>
+                    <li>Color: @p.Colors</li>
+                    @*<li>Solid oak(add?)</li>*@
+                    <li>@p.Price</li>
+                </ul>
+                <button id="BuyButton" class="btn btn-success">Buy</button>
+            </div>
+        </div>
+    }
+</div>
+<p>Count: @Model.Count()</p>

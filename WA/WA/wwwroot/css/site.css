@@ -1,0 +1,156 @@
+﻿/*body {
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+    background-color: #fdffe7;
+}
+
+input {
+    width: 45%;
+    margin: 5px;
+}
+
+textarea {
+    width: 45%;
+    margin: 5px;
+}
+
+input[type=submit] {
+    width: auto;
+    margin: 5px;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.Head {
+    background-color: #dea1ff;
+    display: flex;
+    margin: 10px;
+}
+
+.Name-of-site {
+    width: 50%;
+    text-align: center;
+}
+
+#theForm {
+    background-color: #fbc8ff;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    width: 50%;
+}
+
+#theForm input[type=submit] {
+    background-color: green;
+    color: white;
+    padding: 5px;
+}
+
+#loginToggle {
+    cursor: pointer;
+    text-align: center;
+}
+
+.popup-form {
+    text-align: right;
+    padding: 5px;
+}
+
+#logpass {
+    text-align: left;
+}
+
+.popup-form input {
+    width: 67%;
+}
+
+.popup-form label {
+    width: 25%;
+    display: inline-block;
+}
+
+#remember {
+    width: 45%;
+}
+
+.popup-form input[type=checkbox], .popup-form input[type=submit] {
+    width: auto;
+}
+
+label {
+    padding: 7px;
+    font-size: 16px;
+}
+
+#BuyButton {
+    background-color: green;
+    color: white;
+    padding: 5px;
+}
+
+.door-attributes {
+    color: red;
+}
+
+.Main-area {
+    display: flex;
+    margin: 10px;
+}
+
+#Menu-area {
+    padding: 15px 3px 15px 3px;
+    border: 1px solid black;
+    width: 20%;
+    text-align: center;
+    line-height: 300%;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #efead5;
+    margin: 1px;
+}
+
+menu {
+    display: inline-block;
+    float: left;
+    margin-left: 0;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+    menu li {
+        border: 1px solid black;
+        margin-bottom: 5%;
+        border-radius: 10px;
+        background-color: #fdffe7;
+    }
+
+.info {
+    margin: 1px;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px;
+    background-color: #efead5;
+    width: 80%;
+}
+
+.page {
+    margin: 15px;
+}
+
+footer {
+    text-align: center;
+}
+
+img {
+    width: 40%;
+}
+
+.field-validation-error {
+    color: red;
+}*/

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Doorshop: @ViewBag.Title</title>
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+
+        <div class="navbar navbar-default">
+            <header class="container">
+                <div class="navbar=header">
+                    <div class="navbar-brand">
+                        <i class="fa fa-building-o fa-"></i> Welcome to Doorshop: @ViewBag.Title
+                    </div>
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">&#9776;</button>
+                </div>
+                <div id="menu" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a asp-controller="App" asp-action="Index">Home page</a>
+                        </li>
+                        <li>
+                            <a asp-controller="App" asp-action="Contact">Contact Us</a>
+                        </li>
+                        <li>
+                            <a asp-controller="App" asp-action="About">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+        </div>
+
+        <section class="container">
+            @RenderBody()
+        </section>
+
+        <footer class="container"><div class="text-center"> Copyright 2018 Doorshop</div>
+        <div id="theForm">
+            <div id="loginToggle">Login</div>
+            <form class="popup-form">
+                <div id="logpass">
+                    <div>
+                        <label>Username:</label>
+                        <input />
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" />
+                    </div>
+                </div>
+                <div>
+                    <label id="remember">Remember Me?</label>
+                    <input type="checkbox" />
+                </div>
+                <div>
+                    <input type="submit" value="Login" />
+                </div>
+            </form>
+        </div></footer>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/js/index.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>
