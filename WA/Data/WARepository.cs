@@ -20,6 +20,11 @@ namespace WA.Data
             _logger = logger;
         }
 
+        public void AddEntity(object model)
+        {
+            //throw new NotImplementedException();
+        }
+
         public Order GerOrderById(int id)
         {
             return _ctx.Orders
