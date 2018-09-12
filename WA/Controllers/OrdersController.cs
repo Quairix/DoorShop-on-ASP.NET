@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WA.Data;
 using WA.Data.Entities;
+using WA.ViewModels;
 
 namespace WA.Controllers
 {
@@ -15,10 +17,15 @@ namespace WA.Controllers
     {
         private readonly IWARepository _repository;
         private readonly ILogger<OrdersController> _logger;
-        public OrdersController(IWARepository repository, ILogger<OrdersController> logger)
+        private readonly IMapper _mapper;
+
+        public OrdersController(IWARepository repository, 
+            ILogger<OrdersController> logger,
+            IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -26,7 +33,7 @@ namespace WA.Controllers
         {
             try
             {
-                return Ok(_repository.GetAllOrders());
+                return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(_repository.GetAllOrders()));
             }catch (Exception ex)
             {
                 _logger.LogError($"Failed to get orders: {ex}");
@@ -39,7 +46,7 @@ namespace WA.Controllers
             try
             {
                 var order = _repository.GerOrderById(id);
-                if (order != null) return Ok(order);
+                if (order != null) return Ok(_mapper.Map<Order, OrderViewModel>(order));
                 else return NotFound();
             }
             catch (Exception ex)
@@ -50,19 +57,35 @@ namespace WA.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Order model)
+        public IActionResult Post([FromBody]OrderViewModel model)
         {
             //add it to the db
             try
             {
-                _repository.AddEntity(model);
-                _repository.SaveAll();
+                if (ModelState.IsValid)
+                {
+                    var newOrder = _mapper.Map<OrderViewModel, Order>(model);
+                    if (newOrder.OrderDate == DateTime.MinValue)
+                    {
+                        newOrder.OrderDate = DateTime.Now;
+                    }
+                    _repository.AddEntity(newOrder);
+                    if (_repository.SaveAll())
+                    {
+                        return Created($"/api/orders/{newOrder.Id}", _mapper.Map<Order, OrderViewModel>(newOrder));
+                    }
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
             }
             catch (Exception ex)
             {
                 _logger.LogError($"Failed to save a new order: {ex}");
             }
-            return Ok();
+
+            return BadRequest("Failed to save new order");
         }
     }
 }

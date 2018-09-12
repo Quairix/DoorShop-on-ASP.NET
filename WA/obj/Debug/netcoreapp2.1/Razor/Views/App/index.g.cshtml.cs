@@ -65,7 +65,7 @@ using WA.Data.Entities;
             WriteLiteral("<div class=\"col-md-9\">\r\n    <div class=\"row\">\r\n        <h2>Shrek\'s door</h2>\r\n        <ul>\r\n            <li>Glazed</li>\r\n            <li>Blind</li>\r\n        </ul>\r\n        ");
             EndContext();
             BeginContext(213, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a1dc271b3a2e4169b5a855c7d46a6f39", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "64c26c2b3b5941cf809514cac60f58ab", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

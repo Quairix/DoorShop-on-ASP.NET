@@ -22,7 +22,7 @@ namespace WA.Data
 
         public void AddEntity(object model)
         {
-            //throw new NotImplementedException();
+            _ctx.Add(model);
         }
 
         public Order GerOrderById(int id)
