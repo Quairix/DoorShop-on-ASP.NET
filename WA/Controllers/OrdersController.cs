@@ -29,11 +29,12 @@ namespace WA.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(bool includeItems = true)
         {
             try
             {
-                return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(_repository.GetAllOrders()));
+                var results = _repository.GetAllOrders(includeItems);
+                return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(results));
             }catch (Exception ex)
             {
                 _logger.LogError($"Failed to get orders: {ex}");
@@ -45,7 +46,7 @@ namespace WA.Controllers
         {
             try
             {
-                var order = _repository.GerOrderById(id);
+                var order = _repository.GetOrderById(id);
                 if (order != null) return Ok(_mapper.Map<Order, OrderViewModel>(order));
                 else return NotFound();
             }

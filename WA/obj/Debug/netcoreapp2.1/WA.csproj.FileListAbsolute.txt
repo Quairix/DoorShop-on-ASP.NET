@@ -29,3 +29,4 @@ C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Pages\Error.g.cshtml.cs
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewStart.g.cshtml.cs
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Shop.g.cshtml.cs
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs

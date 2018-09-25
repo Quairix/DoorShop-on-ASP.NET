@@ -6,11 +6,13 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using WA.Data;
+using WA.Data.Entities;
 using WA.Services;
 
 namespace WA
@@ -26,6 +28,11 @@ namespace WA
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<StoreUser, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<WAContext>();
             services.AddDbContext<WAContext>(cfg =>
             {
                 cfg.UseSqlServer(_config.GetConnectionString("WAConnectionString"));
@@ -55,10 +62,9 @@ namespace WA
             }
 
             app.UseStaticFiles();
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("<html><body><h1>Hello World!</h1></body></html>");
-            //});
+
+            app.UseAuthentication();
+
             app.UseMvc(cfg =>
             {
                 cfg.MapRoute("Default", 
@@ -71,7 +77,7 @@ namespace WA
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var seeder = scope.ServiceProvider.GetService<WASeeder>();
-                    seeder.Seed();
+                    seeder.Seed().Wait();
                 }
             }
         }

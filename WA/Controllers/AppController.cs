@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WA.Data;
 using WA.Services;
@@ -17,12 +18,10 @@ namespace WA.Controllers
         public AppController(IMailService mailService, IWARepository repository/*, WAContext context*/)
         {
             _mailService = mailService;
-            //_context = context;
-            _repository = repository;
+             _repository = repository;
         }
         public IActionResult Index()
         {
-            //throw new InvalidOperationException("Bad things happened");
             return View();
         }
         [HttpGet("Contact")]
@@ -48,7 +47,7 @@ namespace WA.Controllers
         {
             return View();
         }
-
+        [Authorize]
         [HttpGet("Shop")]
         public IActionResult Shop()
         {

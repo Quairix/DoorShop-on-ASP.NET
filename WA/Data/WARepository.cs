@@ -25,7 +25,7 @@ namespace WA.Data
             _ctx.Add(model);
         }
 
-        public Order GerOrderById(int id)
+        public Order GetOrderById(int id)
         {
             return _ctx.Orders
                 .Include(o => o.Items)
@@ -34,12 +34,20 @@ namespace WA.Data
                 .FirstOrDefault();
         }
 
-        public IEnumerable<Order> GetAllOrders()
+        public IEnumerable<Order> GetAllOrders(bool includeItems)
         {
-            return _ctx.Orders
-                .Include(o=> o.Items)
-                .ThenInclude(i => i.Product)
-                .ToList();
+            if (includeItems)
+            {
+                return _ctx.Orders
+                    .Include(o => o.Items)
+                    .ThenInclude(i => i.Product)
+                    .ToList();
+            }
+            else
+            {
+                return _ctx.Orders
+                    .ToList();
+            }
         }
 
         public IEnumerable<Product> GetAllProducts()
