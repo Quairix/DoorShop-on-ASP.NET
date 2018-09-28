@@ -56,5 +56,11 @@ namespace WA.Controllers
             ModelState.AddModelError("", "Failed to login");
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Logouot()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "App");
+        }
     }
 }

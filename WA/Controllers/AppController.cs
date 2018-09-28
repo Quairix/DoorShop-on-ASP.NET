@@ -51,9 +51,6 @@ namespace WA.Controllers
         [HttpGet("Shop")]
         public IActionResult Shop()
         {
-            //var results = from p in _context.Products
-            //              orderby p.Category
-            //              select p;
             var results = _repository.GetAllProducts();
             return View(results);
         }

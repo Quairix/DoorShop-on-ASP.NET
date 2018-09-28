@@ -74,7 +74,7 @@ using WA.Data.Entities;
             WriteLiteral("        <div class=\"col-md-3 h-100\">\r\n            <div class=\"well well-sm\">\r\n                    ");
             EndContext();
             BeginContext(233, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "465a29c7b84c4d53b6e54cac49f844c7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "27c3d8c55d2e4ec7b3bea7c661dc5992", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

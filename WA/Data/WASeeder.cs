@@ -28,7 +28,7 @@ namespace WA.Data
         public async Task Seed()
         {
             _ctx.Database.EnsureCreated();
-            
+
             var user = await _userManager.FindByEmailAsync("quarix@wa.com");
 
             if (user == null)
@@ -40,29 +40,13 @@ namespace WA.Data
                     UserName = "quarix@wa.com",
                     Email = "quarix@wa.com"
                 };
-                var result = await _userManager.CreateAsync(user, "somepass!");
+                var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
                 if (result == IdentityResult.Success)
                 {
                     throw new InvalidOperationException("Failed to create default user");
                 }
             }
-            var user1 = await _userManager.FindByEmailAsync("quarix1@wa.com");
 
-            if (user1 == null)
-            {
-                user1 = new StoreUser()
-                {
-                    FirstName = "Dmitriy",
-                    LastName = "Shapovalov",
-                    UserName = "quarix1",
-                    Email = "quarix@wa.com"
-                };
-                var result1 = await _userManager.CreateAsync(user, "12345678");
-                if (result1 == IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Failed to create default user");
-                }
-            }
             if (!_ctx.Products.Any())
             {
                 //Need to create sample data
