@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using WA.Data.Entities;
 using WA.ViewModels;
 using Microsoft.Extensions.Configuration;
+using WA.Data;
 
 namespace WA.Controllers
 {
@@ -20,16 +21,22 @@ namespace WA.Controllers
         private readonly SignInManager<StoreUser> _signInManager;
         private readonly UserManager<StoreUser> _userManager;
         private readonly IConfiguration _config;
+        private readonly WAContext _context;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccountController(ILogger<AccountController> logger,
             SignInManager<StoreUser> signInManager,
             UserManager<StoreUser> userManager,
-            IConfiguration config)
+            IConfiguration config,
+            WAContext context,
+            RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _signInManager = signInManager;
             _userManager = userManager;
             _config = config;
+            _context = context;
+            _roleManager = roleManager;
         }
 
         public IActionResult Login()
@@ -58,18 +65,65 @@ namespace WA.Controllers
                     }
                     else
                     {
-                        RedirectToAction("Shop", "App");
+                        return RedirectToAction("Index", "App");
                     }
                 }
             }
+            else
             ModelState.AddModelError("", "Failed to login");
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> Logouot()
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "App");
+        }
+
+        [HttpGet("Register")]
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(Register model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user == null)
+                {
+                    user = new StoreUser()
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        UserName = model.UserName,
+                        Email = model.Email
+                    };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result != IdentityResult.Success)
+                    {
+                        string ErrorString = "\n";
+                        foreach (var error in result.Errors)
+                        {
+                            ErrorString += error.Description + "\n";
+                        }
+                        ViewBag.UserMessage = "Failed to register user:" + ErrorString;
+                    }
+                    else
+                    {
+                        ViewBag.UserMessage = "Registration complete.";
+
+                        bool x = await _roleManager.RoleExistsAsync("Users");
+                            var result1 = await _userManager.AddToRoleAsync(user, "Users");
+                    }
+                }
+                ModelState.Clear();
+            }
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateToken([FromBody] LoginViewModel model)
@@ -79,7 +133,8 @@ namespace WA.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Username);
                 if (user != null)
                 {
-                    var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
+                    var result = await _signInManager.CheckPasswordSignInAsync(user,
+                        model.Password, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
                         var claims = new[]

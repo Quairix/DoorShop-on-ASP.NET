@@ -2,31 +2,82 @@
     ViewBag.Title = "Shop page";
 }
 @model IEnumerable<Product>
+@*@section Scripts{
+        <script src="~/ts/storecustomer.js"></script>
+        <script src="~/ts/main.js"></script>
+    }*@
 
-<div class="col-md-11">
+<div class="col-md-12">
     @foreach (var p in Model)
     {
-        <div class="col-md-3 h-100">
+        <div style="height:600px;" class="col-md-4">
             <div class="well well-sm">
-                    <img src="~/img/@(p.DoorId).jpg" class="img-responsive" alt="@p.Title" />
-                    <h3 style="text-align:center">@p.Title</h3>
-                    <p style="text-align:center; font-size:smaller;">@p.Category</p>
-                    <ul>
-                        <li>Manufacturer: @p.Manufacturer</li>
-                        <li>
+                <img style="height:300px;" src="~/img/@(p.DoorId).jpg" class="img-responsive" alt="@p.Title" />
+                <h4 style="text-align:center">@p.Title</h4>
+                <p style="text-align:center; font-size:smaller;">@p.Category</p>
+                <ul>
+                    <li>Manufacturer: @p.Manufacturer</li>
+
+                    <li>
+                        <div style="height:80px;">
                             @if (p.DoorDescription == null)
-                            {<text>No description</text>}
-                        else
-                        { <text>@p.DoorDescription</text>}
-                        </li>
-                        <li>Size: @p.Size</li>
-                        <li>Color: @p.Colors</li>
-                        @*<li>Solid oak(add?)</li>*@
-                        <li>@p.Price</li>
-                    </ul>
+                            {
+                                string str = "No description";
+                                str = str.PadLeft(100);
+                                <text>
+                                    @str
+                                </text>
+                            }
+                            else
+
+                       if (p.DoorDescription.Length > 120)
+                            {
+                                <text>
+                                    @p.DoorDescription.Substring(0, Math.Min(p.DoorDescription.Length, 120))...
+                                </text>
+                            }
+                            else
+                            {<text>
+                                    @p.DoorDescription.PadLeft(100)
+                            </text>}
+                        </div>
+                    </li>
+                    <li>Size: @p.Size</li>
+                    <li>Color: @p.Colors</li>
+                    @*<li>Solid oak(add?)</li>*@
+
+                    <li>@p.Price</li>
+                </ul>
+                <div align="right">
                     <button id="BuyButton" class="btn btn-success">Buy</button>
+                    <button class="btn btn-primary" onClick='location.href="../Product?id=@p.Id"'>Details</button>
                 </div>
+            </div>
         </div>
     }
 </div>
-<p>Count: @Model.Count()</p>
+<div class="fixedbut">
+        <div class="categories">
+                <div>
+                    <div class="btncategory"><a asp-controller="Shop" asp-action="Interroom door">Interroom Doors</a></div>
+                </div>
+                <div>
+                    <div class="btncategory"><a asp-controller="Shop" asp-action="Steel Door">Steel Doors</a></div>
+                </div>
+                <div>
+                    <div class="btncategory"><a asp-controller="Shop" asp-action="Furniture">Furniture</a></div>
+                </div>
+        </div>
+</div>
+
+<div class="fixedright">
+    <div class="searchbar">
+        @using (Html.BeginForm("Shop", "App", FormMethod.Post))
+        {
+            @Html.TextBox("name", "", new { @class = "searchbox" })
+            <input type="submit" value="Search" class="btn btn-default" />
+        }
+    </div>
+</div>
+@*<p>Count: @Model.Count()</p>*@
+

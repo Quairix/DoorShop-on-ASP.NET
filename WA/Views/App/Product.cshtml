@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = Model.Title;
+}
+@model Product
+
+<h2>
+    <a href="../Shop/All">&lt;&lt; Back to the Shop page</a> View Product: @ViewBag.Title
+</h2>
+
+    <div class="well well-sm">
+        <img style="height:300px;" src="~/img/@(Model.DoorId).jpg" class="img-responsive" alt="@Model.Title" />
+        <h4 style="text-align:center">@Model.Title</h4>
+        <p style="text-align:center; font-size:smaller;">@Model.Category</p>
+        <ul>
+            <li>Manufacturer: @Model.Manufacturer</li>
+
+            <li>
+                @if (Model.DoorDescription == null)
+                {
+                    <text>
+                        No description
+                    </text>
+                }
+                else
+                {
+                    <text>
+                        @Model.DoorDescription
+                    </text>
+                }
+            </li>
+            <li>Size: @Model.Size</li>
+            <li>Color: @Model.Colors</li>
+
+            <li>@Model.Price</li>
+        </ul>
+        <div Align="right">
+            <form method="post">
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <button type="submit" asp-for=@Model.Id class="btn btn-danger">Delete</button>
+                }
+                    <div class="text-success">@ViewBag.UserMessage</div>
+
+            </form>
+        </div>
+    </div>

@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\ts\main.ts" />
+    <None Include="wwwroot\ts\storecustomer.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +22,9 @@
 
   <ItemGroup>
     <Content Update="Pages\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\App\Cabinet.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

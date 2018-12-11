@@ -50,7 +50,8 @@ namespace WA
             {
                 cfg.UseSqlServer(_config.GetConnectionString("WAConnectionString"));
             });
-
+           // services.BuildServiceProvider().GetService<WAContext>().Database.Migrate();
+            Mapper.Reset();
             services.AddAutoMapper();
 
             services.AddTransient<IMailService, NullMailService>();
@@ -81,7 +82,6 @@ namespace WA
             }
 
             app.UseStaticFiles();
-
             app.UseAuthentication();
 
             app.UseMvc(cfg =>

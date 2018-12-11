@@ -22,21 +22,49 @@ namespace WA.Data
         {
             _ctx.Add(model);
         }
-
-        public Order GetOrderById(int id)
+        public void AddOrder(Order newOrder)
         {
-            return _ctx.Orders
-                .Include(o => o.Items)
-                .ThenInclude(i => i.Product)
-                .Where(o => o.Id == id)
-                .FirstOrDefault();
-        }
+            // convert new products to lookup of product 
+            // we don't want every order to automatically try and add 
+            // the same product to the db multiple times.
+            foreach (var item in newOrder.Items)
+            {
+                //the products visible to users should exist in the database anyway
+                item.Product = _ctx.Products.Find(item.Product.Id);
+            }
 
+            AddEntity(newOrder);
+        }
         public IEnumerable<Order> GetAllOrders(bool includeItems)
         {
             if (includeItems)
             {
                 return _ctx.Orders
+                .Include(o => o.Items)
+                .ThenInclude(oi => oi.Product)
+                .ToList();
+            }
+            else
+            {
+                return _ctx.Orders
+                .ToList();
+            }
+        }
+        public Order GetOrderById(string username, int id)
+        {
+            return _ctx.Orders
+                .Include(o => o.Items)
+                .ThenInclude(i => i.Product)
+                .Where(o => o.Id == id && o.User.UserName == username)
+                .FirstOrDefault();
+        }
+
+        public IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems)
+        {
+            if (includeItems)
+            {
+                return _ctx.Orders
+                    .Where(o=>o.User.UserName == username)
                     .Include(o => o.Items)
                     .ThenInclude(i => i.Product)
                     .ToList();
@@ -44,6 +72,7 @@ namespace WA.Data
             else
             {
                 return _ctx.Orders
+                    .Where(o => o.User.UserName == username)
                     .ToList();
             }
         }
@@ -67,6 +96,19 @@ namespace WA.Data
         {
             return _ctx.Products
                 .Where(p => p.Category == category)
+                .ToList();
+        }
+
+        public Product GetProductsById(int Id)
+        {
+            return _ctx.Products
+                .Where(p => p.Id == Id)
+                .First();
+        }
+        public IEnumerable<Product> GetProductsByName(string name)
+        {
+            return _ctx.Products
+                .Where(p => p.Title == name)
                 .ToList();
         }
         public bool SaveAll()

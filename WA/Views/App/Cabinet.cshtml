@@ -1,0 +1,61 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Manage products";
+}
+@section scripts {
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<div class="col-md-6 col-md-offset-3">
+    <div class="well">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly">
+
+            </div>
+            <div class="form-group">
+                <div><label asp-for="Title">Title:</label></div>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div><label asp-for="Category">Category:</label></div>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div><label asp-for="Manufacturer">Manufacturer:</label></div>
+                <input asp-for="Manufacturer" class="form-control" />
+                <span asp-validation-for="Manufacturer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div><label asp-for="DoorDescription">DoorDescription:</label></div>
+                <input asp-for="DoorDescription" class="form-control" />
+                <span asp-validation-for="DoorDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div><label asp-for="Size">Size:</label></div>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div><label asp-for="Colors">Colors:</label></div>
+                <input asp-for="Colors" class="form-control" />
+                <span asp-validation-for="Colors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div><label asp-for="Price">Price:</label></div>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div><label asp-for="DoorId">Img:</label></div>
+                <input asp-for="DoorId" class="form-control" type="file" enctype = "multipart/form-data" />
+                <span asp-validation-for="DoorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Add the product</button>
+            </div>
+            <div class="text-success">@ViewBag.UserMessage</div>
+        </form>
+    </div>
+</div>
