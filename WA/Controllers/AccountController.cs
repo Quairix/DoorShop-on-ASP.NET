@@ -118,7 +118,10 @@ namespace WA.Controllers
                         ViewBag.UserMessage = "Registration complete.";
 
                         bool x = await _roleManager.RoleExistsAsync("Users");
+                        if (x)
+                        {
                             var result1 = await _userManager.AddToRoleAsync(user, "Users");
+                        }
                     }
                 }
                 ModelState.Clear();

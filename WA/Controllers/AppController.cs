@@ -4,6 +4,13 @@ using WA.Data;
 using WA.Services;
 using WA.ViewModels;
 using WA.Data.Entities;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using System.Security;
+using System.Security.Permissions;
+using System.Threading.Tasks;
 
 namespace WA.Controllers
 {
@@ -12,12 +19,14 @@ namespace WA.Controllers
         private readonly IMailService _mailService;
         private readonly IWARepository _repository;
         private readonly WAContext _context;
+        private readonly IHostingEnvironment _app;
 
-        public AppController(IMailService mailService, IWARepository repository, WAContext context)
+        public AppController(IMailService mailService, IWARepository repository, WAContext context, IHostingEnvironment app)
         {
             _mailService = mailService;
              _repository = repository;
             _context = context;
+            _app = app;
         }
         public IActionResult Index()
         {
@@ -99,13 +108,51 @@ namespace WA.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost("Cabinet")]
-        public IActionResult Cabinet(Product model)
+        public async Task<IActionResult> Cabinet(Product model, IFormFile upload)
         {
-            if (ModelState.IsValid)
+            if ((ModelState.IsValid) && (upload != null))
             {
-                _context.Products.Add(model);
-                _context.SaveChanges();
-                ViewBag.UserMessage = "The product has been added.";
+                var filePath = _app.WebRootPath + "\\img\\";
+                DirectoryInfo dirInfo = new DirectoryInfo(filePath);
+
+                var permissionSet = new PermissionSet(PermissionState.None);
+                var writePermission = new FileIOPermission(FileIOPermissionAccess.Write, filePath);
+
+                permissionSet.AddPermission(writePermission);
+                FileInfo sameFile = new FileInfo(filePath + upload.FileName);
+                if (!sameFile.Exists)
+                {
+                    using (FileStream stream = new FileStream(filePath + "\\" + upload.FileName, FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite))
+                    {
+                        await upload.CopyToAsync(stream);
+                    }
+                    model.DoorId = upload.FileName;
+                    _context.Products.Add(model);
+                    _context.SaveChanges();
+                    ViewBag.UserMessage = "The product has been added.";
+                }
+                else
+                {
+                    int number = 1;
+                    bool noOut = true;
+                    var fileNameCut = upload.FileName.Remove(upload.FileName.IndexOf('.'), upload.FileName.Length - upload.FileName.IndexOf('.'));
+                    do
+                    {
+                        FileInfo newFile1 = new FileInfo(filePath + fileNameCut + number.ToString() + ".jpg");
+                        number++;
+                        noOut = newFile1.Exists;
+                    } while (noOut);
+                    fileNameCut += number.ToString() + ".jpg";
+                    using (FileStream stream = new FileStream(filePath + "\\" + fileNameCut , FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite))
+                    {
+                        await upload.CopyToAsync(stream);
+                    }
+                    model.DoorId = fileNameCut;
+                    _context.Products.Add(model);
+                    _context.SaveChanges();
+                    ViewBag.UserMessage = "The product has been added.";
+                }
+                    //ViewBag.UserMessage = "A file with this name already exists";
                 ModelState.Clear();
             }
             return View();

@@ -71,7 +71,7 @@ using WA.Data.Entities;
             WriteLiteral("            <h2 class=\"text-center\" style=\"font-weight:bold;\">Doorshop \"Flex to the next door\"</h2>\r\n            <h3 class=\"text-center\">Doors and furniture at the lowest prices.</h3>\r\n            ");
             EndContext();
             BeginContext(779, 74, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a62fbf53e5714833a50ea296a0723bc9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "4e21bca072e34060bfb95c601a74950f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -91,7 +91,7 @@ using WA.Data.Entities;
             WriteLiteral("\r\n            ");
             EndContext();
             BeginContext(867, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8f83febc08dc471cb95e404edf1749bc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2beaf4ba5ea942649534380dc94fa3dc", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
