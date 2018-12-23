@@ -8,18 +8,9 @@
       "files": [ "jquery.min.js", "jquery.min.map" ]
     },
     {
-      "library": "twitter-bootstrap@3.3.7",
-      "destination": "wwwroot/lib/bootstrap",
-      "files": [
-        "js/bootstrap.min.js",
-        "css/bootstrap-theme.min.css",
-        "css/bootstrap.min.css",
-        "fonts/glyphicons-halflings-regular.eot",
-        "fonts/glyphicons-halflings-regular.svg",
-        "fonts/glyphicons-halflings-regular.ttf",
-        "fonts/glyphicons-halflings-regular.woff",
-        "fonts/glyphicons-halflings-regular.woff2"
-      ]
+      "provider": "unpkg",
+      "library": "bootstrap@3.3.5",
+      "destination": "wwwroot/lib/bootstrap/"
     },
     {
       "library": "jquery-validate@1.17.0",

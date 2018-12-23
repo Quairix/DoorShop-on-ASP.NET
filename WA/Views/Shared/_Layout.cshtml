@@ -1,83 +1,197 @@
-﻿<!DOCTYPE html>
+﻿@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Doorshop: @ViewBag.Title</title>
     <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 </head>
-<body>
 
-        <div class="navbar fixed-nav navbar-default">
-            <header class="container">
-                <div>
-                    <div class="navbar-brand" style="width:40%;">
-                        <i class="fa fa-building-o fa-"></i> Welcome to Doorshop: @ViewBag.Title
+<body class="page-template-default page page-id-243">
+    <div class="site-container">
+        <div class="header-panel">
+            <div class="header-panel">
+                <nav id="main-nav" class="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-3 col-md-12 no-pad">
+                                <div class="site-logo">
+                                    <a asp-controller="App" asp-action="Index">
+                                        <img class="normal-logo" src="/img/logo1.png" alt="The Door Shop">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-9 col-md-12 no-pad">
+                                <div class="menu-wrapper">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse_header" aria-expanded="false">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    <div class="collapse navbar-collapse" id="main-navbar-collapse_header">
+                                        <div id="top-navigation_header" class="top-navigation">
+                                            <ul id="menu-main-menu" class="main-menu nav navbar-nav">
+                                                <li id="menu-item-251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-251">
+                                                    <a asp-controller="App" asp-action="Index">@Localizer["HomePage"]</a>
+                                                </li>
+                                                <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-243 current_page_item menu-item-250">
+                                                    <a asp-controller="App" asp-action="Shop">@Localizer["ShopPage"]</a>
+                                                </li>
+                                                <li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-249">
+                                                    <a asp-controller="App" asp-action="Contact">@Localizer["ContactUs"]</a>
+                                                </li>
+                                                <li id="menu-item-247" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-247">
+                                                    <a asp-controller="App" asp-action="About">@Localizer["AboutUs"]</a>
+                                                </li>
+                                                @if (User.IsInRole("Admin"))
+                                                {
+                                                    <li id="menu-item-247" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-247">
+                                                        <a asp-controller="App" asp-action="Cabinet">@Localizer["AddProducts"]</a>
+                                                    </li>
+                                                }
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li id="menu-item-246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-246">
+                                                        <a asp-controller="Account" asp-action="Logout">@Localizer["Logout"]</a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li id="menu-item-246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-246">
+                                                        <a asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">&#9776;</button>
-                </div>
-                <div id="menu" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav" style="width:60%">
-                        <li style="width:18%; ">
-                            <a asp-controller="App" asp-action="Index">Home page</a>
-                        </li>
-                        <li style="width:18%; ">
-                            <a asp-controller="App" asp-action="Shop">Shop page</a>
-                        </li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li style="width:15%; ">
-                                <a asp-controller="App" asp-action="Contact">Contact Us</a>
-                            </li>
-                            <li style="width:14%; ">
-                                <a asp-controller="App" asp-action="About">About Us</a>
-                            </li>
-                            <li style="width:17%; ">
-                                <a asp-controller="App" asp-action="Cabinet">Add products</a>
-                            </li>
-                            <li style="width:10%;  ">
-                                <a asp-controller="Account" asp-action="Logout">Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li style="width:20%; ">
-                                <a asp-controller="App" asp-action="Contact">Contact Us</a>
-                            </li>
-                            <li style="width:20%; ">
-                                <a asp-controller="App" asp-action="About">About Us</a>
-                            </li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li style="width:20%;  ">
-                                    <a asp-controller="Account" asp-action="Logout">Logout</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li style="width:20%; ">
-                                    <a asp-controller="Account" asp-action="Login">Login</a>
-                                </li>
-                            }
-                        }
-                    </ul>
-                </div>
-            </header>
+                </nav>
+            </div>
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main" role="main">
+
+                    <div class="banner">
+
+                        @RenderBody()
+                    </div>
+                </main>
+            </div>
         </div>
-        <section class="container bodyIndent">
-            @RenderBody()
-        </section>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-wrapper col-xs-12 no-pad">
 
-        <footer class="container"><div class="text-center"> Copyright 2018 Doorshop</div>
-    </footer>
+                    <div class="footer-wrap left-address col-xs-12 col-sm-5 col-lg-4">
+                        <div id="text-6" class="widget widget_text">
+                            <div class="textwidget">
+                                <ul class="address">
+                                    <li>@Localizer["Desc1"]</li>
+                                    <li>@Localizer["Street"]</li>
+                                    <li>@Localizer["City"]</li>
+                                    <li><a href="tel:12345678">123.456.789</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-wrap footer-site-logo col-xs-12 col-sm-1 col-lg-3">
+                        <div class="site-logo">
+                            <a asp-controller="App" asp-action="Index">
+                                <img class="img-responsive normal-logo" src="/img/logo1.png" alt="The Door Shop">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-wrap footer-menu col-xs-12 col-sm-5 col-lg-4">
+                        <div class="collapse navbar-collapse" id="main-navbar-collapse_footer">
+                            <div id="top-navigation_footer" class="top-navigation">
+                                <ul id="menu-main-menu-1" class="main-menu nav navbar-nav">
+                                    <li id="menu-item-251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-251">
+                                        <a asp-controller="App" asp-action="Index">@Localizer["HomePage"]</a>
+                                    </li>
+                                    <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-243 current_page_item menu-item-250">
+                                        <a asp-controller="App" asp-action="Shop">@Localizer["ShopPage"]</a>
+                                    </li>
+                                    <li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-249">
+                                        <a asp-controller="App" asp-action="Contact">@Localizer["ContactUs"]</a>
+                                    </li>
+                                    <li id="menu-item-247" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-247">
+                                        <a asp-controller="App" asp-action="About">@Localizer["AboutUs"]</a>
+                                    </li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li id="menu-item-246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-246">
+                                            <a asp-controller="Account" asp-action="Logout">@Localizer["Logout"]</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li id="menu-item-246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-246">
+                                            <a asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="copyright">
+                    @{
+                        // получаем сервис IRequestCultureFeature
+                        var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+                        // получаем список поддерживаемых культур
+                        var cultureItems = LocOptions.Value.SupportedUICultures
+                            .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+                            .ToList();
+                    }
+                    <div style="width:100px; margin:auto; ">
+                        <form asp-controller="App" asp-action="SetLanguage"
+                              asp-route-returnUrl="@Context.Request.Path"
+                              method="post" class="form-horizontal">
+                            <div class="row">
+                                <div style="display:inline-block; width:auto; font-size:0.7rem;">Language:</div>
+                                <div style="display:inline-block; width:auto;">
+                                    <select class="form-control form-control-sm" name="culture" onchange="this.form.submit();"
+                                            asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                                            asp-items="cultureItems"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    © THE DOOR SHOP, @Localizer["AllRights"] 2018
+                    <div class="col-xs-12" id="footer-navbar-collapse">
+                        <div id="top-navigation_copyrightmenu" class="top-navigation">
+                            <ul id="menu-footer-menu" class="footer-menu nav navbar-nav">
+                                <li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-252">
+                                    <p style="font-size:10px; font-weight:bold;">@Localizer["Coursework"]</p>
 
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/js/index.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/slick.js"></script>
+    <script src="~/js/theme.js"></script>
     @RenderSection("scripts", false)
 </body>
 </html>

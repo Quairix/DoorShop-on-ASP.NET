@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "b2241d8a520148cfd963fb3f222792a807ac6498"
+    "signature": "d70454add35fee62f4430e94cc791b650123284d"
   },
   "compilationOptions": {
     "defines": [
@@ -10,7 +10,7 @@
       "NETCOREAPP",
       "NETCOREAPP2_1"
     ],
-    "languageVersion": "",
+    "languageVersion": "7.1",
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
@@ -29,11 +29,18 @@
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.4",
-          "Microsoft.Web.LibraryManager.Build": "1.0.163",
           "jQuery": "3.3.1"
         },
         "runtime": {
           "WA.dll": {}
+        },
+        "resources": {
+          "en/WA.resources.dll": {
+            "locale": "en"
+          },
+          "ru/WA.resources.dll": {
+            "locale": "ru"
+          }
         },
         "compile": {
           "WA.dll": {}
@@ -390,11 +397,6 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
-      "Microsoft.Web.LibraryManager.Build/1.0.163": {
-        "dependencies": {
-          "System.Runtime.Loader": "4.3.0"
-        }
-      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.0"
@@ -549,13 +551,6 @@
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
-        }
-      },
-      "System.Runtime.Loader/4.3.0": {
-        "dependencies": {
-          "System.IO": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
         }
       },
       "System.ValueTuple/4.5.0": {},
@@ -3635,13 +3630,6 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.4",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.1.4.nupkg.sha512"
     },
-    "Microsoft.Web.LibraryManager.Build/1.0.163": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-dEtc1pxMBrkzn4DvqBq82cAk9jdhHKG1AL5JMu4+3AoOc1AuzlUW+Nyh7P6j4egEs4q3oQfk4ZGmnN17xDlyew==",
-      "path": "microsoft.web.librarymanager.build/1.0.163",
-      "hashPath": "microsoft.web.librarymanager.build.1.0.163.nupkg.sha512"
-    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -3704,13 +3692,6 @@
       "sha512": "sha512-td7x21K8LalpjTWCzW/nQboQIFbq9i0r+PCyBBCdLWWnm4NBcdN18vpz/G9hCpUaCIfRL+ZxJNVTywlNlB1aLQ==",
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
-    },
-    "System.Runtime.Loader/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-DHMaRn8D8YCK2GG2pw+UzNxn/OHVfaWx7OTLBD/hPegHZZgcZh3H6seWegrC4BYwsfuGrywIuT+MQs+rPqRLTQ==",
-      "path": "system.runtime.loader/4.3.0",
-      "hashPath": "system.runtime.loader.4.3.0.nupkg.sha512"
     },
     "System.ValueTuple/4.5.0": {
       "type": "package",

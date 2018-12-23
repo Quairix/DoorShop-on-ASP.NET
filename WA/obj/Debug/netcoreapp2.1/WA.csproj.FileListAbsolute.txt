@@ -33,3 +33,33 @@ C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Cabinet.g.cshtml.cs
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Product.g.cshtml.cs
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
+C:\ASP\WA\WA\bin\Debug\netcoreapp2.1\en\WA.resources.dll
+C:\ASP\WA\WA\bin\Debug\netcoreapp2.1\ru\WA.resources.dll
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.csproj.GenerateResource.cache
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\en\WA.resources.dll
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\ru\WA.resources.dll
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Controllers.AppController.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Controllers.AppController.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Index.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Index.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.Shared._Layout.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.Shared._Layout.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Shop.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Shop.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Contact - Copy.g.cshtml.cs
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout - Copy.g.cshtml.cs
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Cabinet.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Cabinet.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Contact.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Contact.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.About.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.About.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.Account.Login.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.Account.Login.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.Account.Register.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.Account.Register.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Data.Entities.Product.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Data.Entities.Product.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Shop - Copy.g.cshtml.cs
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Product.en.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Product.ru.resources

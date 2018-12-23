@@ -1,48 +1,78 @@
-﻿
+﻿@inject IViewLocalizer Localizer
 @{
     ViewBag.Title = Model.Title;
 }
 @model Product
-
-<h2>
-    <a href="../Shop/All">&lt;&lt; Back to the Shop page</a> View Product: @ViewBag.Title
-</h2>
-
-    <div class="well well-sm">
-        <img style="height:300px;" src="~/img/@(Model.DoorId)" class="img-responsive" alt="@Model.Title" />
-        <h4 style="text-align:center">@Model.Title</h4>
-        <p style="text-align:center; font-size:smaller;">@Model.Category</p>
-        <ul>
-            <li>Manufacturer: @Model.Manufacturer</li>
-
-            <li>
-                @if (Model.DoorDescription == null)
-                {
-                    <text>
-                        No description
-                    </text>
-                }
-                else
-                {
-                    <text>
-                        @Model.DoorDescription
-                    </text>
-                }
-            </li>
-            <li>Size: @Model.Size</li>
-            <li>Color: @Model.Colors</li>
-
-            <li>@Model.Price</li>
-        </ul>
-        <div Align="right">
-            <form method="post">
-
-                @if (User.IsInRole("Admin"))
-                {
-                    <button type="submit" asp-for=@Model.Id class="btn btn-danger">Delete</button>
-                }
-                    <div class="text-success">@ViewBag.UserMessage</div>
-
-            </form>
+<div class="banner">
+    <div class="herounit herounit-secondary" style="background-image: url('/img/banner-image-contact-1.png');">
+        <div class="container fullHeight">
+            <div class="row fullHeight">
+                <div class="herounit-wrapper fullHeight col-xs-12">
+                    <div class="herounit-wrap txt-center">
+                        <h1 class="page_title">@Model.Title</h1>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="content-container">
+        <div class="products-page">
+            <div class="col-sm-10 col-md-10 col-xs-10 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">
+                <div class="row">
+                    <div style="display:inline-block;  margin:10px;">
+                        <h3><a href="../Shop/" style="color:gray;">&lt;&lt; Back to the Shop page</a></h3>
+                    </div>
+                    <div style="display:inline-block; float:right; margin:10px;">
+                        <h3>View Product: @ViewBag.Title</h3>
+                    </div>
+                </div>
+                <div class="product_div">
+                    <div class="row vertical-align">
+                        <div style="display:inline-block; width:30%; margin-left:10%; line-height:2;">
+                            <ul>
+                                <li>
+                                    @Localizer["Category"]: @Model.Category
+                                </li>
+                                <li>@Localizer["Manufacturer"]: @Model.Manufacturer</li>
+
+                                <li>
+                                    @if (Model.DoorDescription == null)
+                                    {
+                                        <text>
+                                            @Localizer["NoDescription"]
+                                        </text>
+                                    }
+                                    else
+                                    {
+                                        <text>
+                                            @Model.DoorDescription
+                                        </text>
+                                    }
+                                </li>
+                                <li>@Localizer["Size"]: @Model.Size</li>
+                                <li>@Localizer["Color"]: @Model.Colors</li>
+
+                                <li>@Model.Price $</li>
+                            </ul>
+                        </div>
+                        <div style="display:inline-block; width:50%;" align="right">
+                            <img style="height:300px;" src="~/img/@(Model.DoorId)" class="img-responsive" alt="@Model.Title" />
+                        </div>
+                    </div>
+
+                </div>
+                <div Align="right" style="margin-right:20px;">
+                    <form method="post">
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <button type="submit" asp-for=@Model.Id class="btn btn-danger">Delete</button>
+                        }
+                        <div class="text-success">@ViewBag.UserMessage</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

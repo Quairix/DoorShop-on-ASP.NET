@@ -4,13 +4,14 @@ using WA.Data;
 using WA.Services;
 using WA.ViewModels;
 using WA.Data.Entities;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Security;
 using System.Security.Permissions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Localization;
+using System;
 
 namespace WA.Controllers
 {
@@ -62,43 +63,41 @@ namespace WA.Controllers
         }
 
         [Authorize]
-        [HttpGet("Shop/All")]
+        [HttpGet("Shop")]
         public IActionResult Shop()
         {
-                var results = _repository.GetAllProducts();
-                return View(results);
-        }
-        [HttpPost]
-        public IActionResult Shop(string name, string category)
-        {
-
-            if (name != null)
+            string category = Request.Query["category"];
+            if (category == null)
             {
-                var results = _repository.GetProductsByName(name);
-                return View(results);
+                string name = Request.Query["name"];
+                if (name == null)
+                {
+                    var results = _repository.GetAllProducts();
+                    return View(results);
+                }
+                else
+                {
+                    var results = _repository.GetProductsByName(name);
+                    return View(results);
+                }
             }
             else
-            {
-                var results = _repository.GetAllProducts();
-                return View(results);
-            }
-        }
-        [HttpGet("Shop/{category}")]
-        public IActionResult Shop(string category)
-        {
-            if (category != null)
             {
                 var results = _repository.GetProductsByCategory(category);
                 return View(results);
             }
-            else
-            {
-                var results = _repository.GetAllProducts();
-                return View(results);
-            }
-            
         }
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
 
+            return LocalRedirect(returnUrl);
+        }
         [Authorize(Roles = "Admin")]
         [HttpGet("Cabinet")]
         public IActionResult Cabinet()
@@ -184,7 +183,7 @@ namespace WA.Controllers
                 _context.SaveChanges();
             }
             //ScriptManager.RegisterClientScriptBlock(this.GetType(), "{some text for type}", "alert('{Text come to here}'); ", true);
-            return RedirectToPage("..//Shop//All");
+            return RedirectToAction("Shop", "App");
         }
 
     }

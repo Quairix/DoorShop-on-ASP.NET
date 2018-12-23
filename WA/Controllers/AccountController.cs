@@ -70,7 +70,7 @@ namespace WA.Controllers
                 }
             }
             else
-            ModelState.AddModelError("", "Failed to login");
+                ModelState.AddModelError("", "Failed to login");
             return View();
         }
         [HttpGet]

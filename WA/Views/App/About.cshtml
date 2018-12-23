@@ -1,37 +1,71 @@
-﻿@{
-    ViewBag.Title = "About Us";
+﻿@inject IViewLocalizer Localizer
+@{
+    ViewBag.Title = Localizer["Title"];
 }
-<h2>About Us</h2>
-<div style="padding:2%; ">
-    <p>
-        The Door Shop is a door and hardware supply group of specialists with a unique
-        team approach to product delivery. Our team of managers and technicians have 450
-        years of combined experience in design, management and hardware installation.
-    </p>
-    <p>
-        Most suppliers sell products with a basic understanding of how their products integrate
-        into the finished facility and operations but with a very limited understanding of
-        how they integrate into the construction project itself, with intersecting scopes,
-        divisions and trades.
-    </p>
-    <p>
-        Our pre-construction processes include a thorough review from
-        both a designer and installer perspective, utilizing our technicians’ familiarity
-        with door and hardware installation and construction means and methods. Because of
-        this, we have the unique ability to identify conflicts and problems before products ship.
-    </p>
+<div class="herounit herounit-secondary" style="background-image: url('/img/banner-image-contact-1.png');">
+    <div class="container fullHeight">
+        <div class="row fullHeight">
+            <div class="herounit-wrapper fullHeight col-xs-12">
+                <div class="herounit-wrap txt-center">
+                    <h1 class="page_title">@Localizer["Title"]</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<h2>Our History</h2>
-<div style="padding:2%; ">
-    <p>
-        Our story began on the banks of the Ohio river in Maysville, Kentucky. Jerry T. Rains started The Door Shop in the mid-1980’s, continuing
-        in his family tradition of entrepreneurs in the construction and hardware industry dating back to the 1930s. He built The Door Shop on
-        three main principles, which stand to this day: excellent customer relationships, honest practices, and technical expertise.
-    </p>
-    <p>
-        In 2013, the company relocated to central Ohio when Barry Couts established The Door Shop as a division of True Inspection Services
-        (TIS). A strong foundation, combined with the leadership, client base and success of TIS, has led to the company’s steady growth. Our
-        story continues as The Door Shop team delivers exceptional products and services around the country and overseas and builds partnerships
-        with our valued customers and manufacturers.
-    </p>
+<div class="center_aligned_content homeText-section">
+    <div class="aboutus-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 clearfix">
+                    <h2 class="title txt-center"></h2>
+
+                </div>
+                <div class="col-xs-12 col-lg-12">
+                    <div class="content_wrapper">
+                        <p class="p2"><b>The Door Shop </b> - @Localizer["Desc1"]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="who_we_are_panel">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 no-pad halfGrid-section">
+                <div class="col-xs-12 col-sm-7 no-pad left_text bg-blue isVerticalMiddle">
+                    <h2 class="panel_text">
+                        @Localizer["Desc2"]
+                    </h2>
+                </div>
+                <div class="col-xs-12 col-sm-5 no-pad right_image isVerticalMiddle" style="background-image: url('/img/Door.jpg');">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="left_aligned_content wwaText-section">
+    <div class="aboutus-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 clearfix">
+                    <h2 class="title txt-left">
+                        @Localizer["History"]
+                    </h2>
+
+                </div>
+                <div class="col-xs-12 col-lg-12">
+                    <div class="content_wrapper">
+                        <p>
+                            @Localizer["Desc3"]
+                        </p>
+                        <p>
+                            @Localizer["Desc4"]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

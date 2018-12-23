@@ -1,38 +1,73 @@
-﻿@model ContactViewModel
+﻿@inject IViewLocalizer Localizer
+@model ContactViewModel
 @{
-    ViewBag.Title = "Contact Us";
+    ViewBag.Title = Localizer["Title"];
 }
 @section scripts {
     <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
-    <div class="col-md-6 col-md-offset-3">
-        <div class="well">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly">
 
+<div class="herounit herounit-secondary" style="background-image: url('/img/banner-image-contact-1.png');">
+    <div class="container fullHeight">
+        <div class="row fullHeight">
+            <div class="herounit-wrapper fullHeight col-xs-12">
+                <div class="herounit-wrap txt-center">
+                    <h1 class="page_title">@Localizer["Title"]</h1>
                 </div>
-                <div class="form-group">
-                    <div><label asp-for="Name">Username:</label></div>
-                    <input asp-for="Name" class="form-control"/>
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label asp-for="Email">Mail:</label>
-                    </div>
-                    <input type="email" asp-for="Email" class="form-control"/>
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Message">Text:</label>
-                    <textarea rows="4" asp-for="Message" class="form-control"></textarea>
-                    <span asp-validation-for="Message" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send Message</button>
-                </div>
-                <div class="text-success">@ViewBag.UserMessage</div>
-            </form>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="contact_panel">
+    <div class="container">
+        <div class="row">
+            <div class="contact_content col-sm-6 col-lg-5 col-lg-offset-1">
+                <p>
+                    <strong>@Localizer["TheDoorShop"]</strong><br>
+                    @Localizer["Desc1"]<br>
+                    @Localizer["Street"]<br>
+                    @Localizer["City"]
+                </p>
+                <p>
+                    <strong>@Localizer["Call"]</strong><br>
+                    <a href="tel:123456789">123.456.789</a>
+                </p>
+                <p><strong>@Localizer["Email"]</strong></p>
+                <p><a href="mailto:quarix@wa.com">quarix@wa.com</a></p>
+            </div>
+            <div class="contact_form col-sm-6 col-lg-6">
+                <div class="contactform_text">@Localizer["TitleSend"]</div>
+                <div class="frm_forms  with_frm_style frm_style_formidable-style-2" id="frm_form_3_container">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly">
+
+                        </div>
+                        <div class="form-group">
+                            <div><label asp-for="Name">@Localizer["Username"]:</label></div>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label asp-for="Email">@Localizer["Mail"]:</label>
+                            </div>
+                            <input type="email" asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Message">@Localizer["Text"]:</label>
+                            <textarea rows="4" asp-for="Message" class="form-control"></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+                        <div class="frm_submit" align="right">
+                            <button type="submit" class="frm_button_submit frm_final_submit"><i class="fa fa-envelope-o"></i> @Localizer["Btn"]</button>
+                        </div>
+                        <div class="text-success">@ViewBag.UserMessage</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

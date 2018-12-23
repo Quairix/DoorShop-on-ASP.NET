@@ -1,37 +1,55 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewBag.Title = @Localizer["Title"];
 }
-    <div class="col-md-12">
-        <div class="row text-center">
-            @*<h2>Shrek's door</h2>
-        <ul>
-            <li>Glazed</li>
-            <li>Blind</li>
-        </ul>
-        <img src="~/img/hqdefault.jpg" />
-        <h3>Description</h3>
-        <ul class="door-attributes">
-            <li>Manufacturer: Beldoors</li>
-            <li>Color: white, grey, brown</li>
-            <li>Solid oak</li>
-            <li>14.8$</li>
-        </ul>
-        <button id="BuyButton" class="btn btn-success">Buy</button>*@
-            <h2 class="text-center" style="font-weight:bold;">Doorshop "Flex to the next door"</h2>
-            <h3 class="text-center">Doors and furniture at the lowest prices.</h3>
-            <img src="~/img/hello.webp" class="rounded mx-auto d-block" width="70%" />
-            <img src="~/img/kickdoor.gif" class="rounded mx-auto d-block" width="70%" />
-            <h3 class="text-center" style="font-weight:bold;">
-                Over 450 years of combined experience in design, management and hardware installation.
-            </h3>
-            <p>
-                We partner with leading contractors, developers and owners to provide door and hardware products, services and solutions that ensure successful projects while building strong lifetime relationships.
+    <div class=" text-center">
+        <div class="herounit" style="background-image: url('/img/homepage-banner.png');">
+            <div class="container fullHeight">
+                <div class="row fullHeight">
+                    <div class="herounit-wrapper fullHeight col-xs-12">
+                        <div class="herounit-wrap txt-center">
+                            <h1 class="home-title">@Localizer["DescrHomePage0"]</h1>
+                            <div class="scroll-down">
+                                <img src="~/img/arrow-down.png" alt="arrow-down">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center_aligned_content homeText-section">
+            <div class="aboutus-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 clearfix">
+                            <h2 class="title txt-center">
+                                @Localizer["DescrHomePage1"]
+                            </h2>
 
-                An EDGE, DBE, MBE and 8A door and hardware distributor with a nationwide footprint, serving customers throughout the United States and the Caribbean.
-            </p>
-            <p style="font-size:10px; font-weight:bold;">This site is a coursework on the subject "IT"</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-12">
+                            <div class="content_wrapper">
+                                <p class="p1">@Localizer["DescrHomePage2"]</p>
+                                <p class="p1">@Localizer["DescrHomePage3"]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="home_panel">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 no-pad halfGrid-section">
+                        <div class="col-xs-12 col-sm-7 no-pad left_text bg-green isVerticalMiddle">
+                            <h2 class="panel_text">@Localizer["DescrHomePage4"]</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-5 no-pad right_image isVerticalMiddle" style="background-image: url('/img/im2.png');">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-@*<div class="col-md-3">
-        <p>Sample text.</p>
-    </div>*@
