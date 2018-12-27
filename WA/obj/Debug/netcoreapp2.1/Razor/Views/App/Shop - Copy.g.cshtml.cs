@@ -98,7 +98,7 @@ using Microsoft.Extensions.Options;
                 WriteLiteral(" \r\n    ");
                 EndContext();
                 BeginContext(267, 41, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e34641c876c4a858f0b106e2aca9747", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5ea6417e118342a886d1cfcc87949ba0", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -145,7 +145,7 @@ using Microsoft.Extensions.Options;
             WriteLiteral("                    <div class=\"col-sm-4 col-md-4 col-xs-4\">\r\n                        <div class=\"product_div\">\r\n                            ");
             EndContext();
             BeginContext(1143, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6325a51a021747b79375ee60abba9395", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "75b4313062524e15a026ad38b4b3a906", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -350,7 +350,7 @@ WriteAttributeValue("", 3595, p.Id, 3595, 5, false);
             WriteLiteral("</button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"fixedright\">\r\n            <div class=\"searchbar row\">\r\n                ");
             EndContext();
             BeginContext(4746, 335, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8db794fc75ef4eeba2edfdf9473bdb76", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d48aca491e449e28b358d68534dccfc", async() => {
                 BeginContext(4752, 246, true);
                 WriteLiteral("\r\n                    <p>\r\n                        <input class=\"form-control\" style=\"display:inline-block; width:70%;\" type=\"text\" name=\"name\" />\r\n                        <input class=\"btn btn-default\" style=\"display:inline-block;\" type=\"submit\"");
                 EndContext();

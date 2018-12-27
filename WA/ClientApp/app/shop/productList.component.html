@@ -1,0 +1,47 @@
+﻿<div class="row">
+    <div class="product_div " style="margin:5%; margin-bottom:10px; margin-top:5px; padding:2%;">
+        <form #myForm="ngForm" (ngSubmit)="onForm()" align="center" id="myForm">
+            <div class="row">
+                <div style="display:inline-block; width:20%" align="right">
+                    <h4 style="height:34px;">Категория:</h4>
+                    <h4 style="height:34px;">Цена от:</h4>
+                    <h4 style="height:34px;">Цена до:</h4>
+                    <h4 style="height:34px;">Наименование:</h4>
+                </div>
+                <div style="display:inline-block; width:75%;">
+                    <select [(ngModel)]="selectedOption" name="name" ngModel required form="data" class="form-control" style="display:inline-block; width:100%;">
+                        <option value="" selected>Все категории</option>
+                        <option value="Interroom door">Межкомнатные двери</option>
+                        <option value="Steel door">Металличиские двери</option>
+                        <option value="Furniture">Фурнитура</option>
+                    </select>
+                    <input [(ngModel)]="neededPrice" class="form-control" type="number" name="pricemore" ngModel required style="display:inline-block; width:100%;" />
+                    <input [(ngModel)]="neededPriceMax" class="form-control" type="number" name="priceless" ngModel required style="display:inline-block; width:100%;" />
+                    <input [(ngModel)]="searchTitle" class="form-control" type="text" name="name" ngModel required style="display:inline-block; width:100%;" />
+                </div>
+            </div>
+            <input class="btn btn-secondary" type="submit" name="apply" value="Найти" />
+            <!--<input ng-click="$('#myForm')[0].reset();" class="btn btn-secondary" type="submit" name="reset" value="Сбросить фильтры" />-->
+        </form>
+    </div>
+    <div class="col-sm-4 col-md-4 col-xs-4" *ngFor="let p of products">
+        <div class="product_div">
+            <img style="height:300px; margin:auto;" src="../img/{{ p.doorId }}" class="img-responsive" alt="{{ p.title }}" />
+            <h4 style="text-align:center" id="Title" title="{{ p.title }}">{{ p.title }}</h4>
+            <p style="text-align:center; font-size:smaller;">
+                {{ p.categoryRu }}</p>
+                <div style="margin-left: 10%">
+                    <ul>
+                        <li>Производитель: {{ p.manufacturer }}</li>
+                        <li>Размер: {{ p.size }}</li>
+                        <li>Цвета: {{ p.colors }}</li>
+                        <li>{{ p.price | currency:"USD":"symbol" }}</li>
+                    </ul>
+                </div>
+                <div align="right">
+                    <button id="buyButton" class="btn btn-secondary" (click)="addProduct(p)">Купить</button>
+                    <a href="../product?id={{p.id}}" class="btn btn-secondary">Детали</a>
+                </div>
+</div>
+    </div>
+</div>

@@ -3,11 +3,12 @@
     ViewBag.Title = @Localizer["Title"];
 }
 @model IEnumerable<Product>
-@*@section Scripts{
-        <script src="~/ts/storecustomer.js"></script>
-        <script src="~/ts/main.js"></script>
-    }*@
 @section Scripts{
+    <script src="~/clientapp/dist/runtime.js"></script>
+    <script src="~/clientapp/dist/polyfills.js"></script>
+    <script src="~/clientapp/dist/styles.js"></script>
+    <script src="~/clientapp/dist/vendor.js"></script>
+    <script src="~/clientapp/dist/main.js"></script>
     <script src="~/js/shoptheme.js"></script>
 }
 <div class="herounit herounit-secondary" style="background-image: url('/img/bannerimage-products.png');">
@@ -23,107 +24,8 @@
 </div>
 <div class="content-container">
     <div class="products-page">
-        <div class="col-md-10  col-md-offset-1">
-            @{
-                var i = 0;
-            }
-            @while (Model.Count() > i)
-            {
-                var p = Model.ElementAt(i++);
-                <div class="row">
-                    <div class="col-sm-4 col-md-4 col-xs-4">
-                        <div class="product_div">
-                            <img style="height:300px; margin:auto;" src="~/img/@(p.DoorId)" class="img-responsive" alt="@p.Title" />
-                            <h4 style="text-align:center">@p.Title</h4>
-                            <p style="text-align:center; font-size:smaller;">@p.Category</p>
-                            <div style="margin-left: 10%">
-                                <ul>
-                                    <li>@Localizer["Manufacturer"] @p.Manufacturer</li>
-                                    <li>@Localizer["Size"]: @p.Size</li>
-                                    <li>@Localizer["Color"]: @p.Colors</li>
-                                    <li>@p.Price $</li>
-                                </ul>
-                            </div>
-                            <div align="right">
-                                <button id="BuyButton" class="btn btn-secondary">@Localizer["Buy"]</button>
-                                <button class="btn btn-secondary" onClick='location.href="../Product?id=@p.Id"'>@Localizer["Details"]</button>
-                            </div>
-                        </div>
-                    </div>
-                    @if (i < Model.Count())
-                    {
-                        p = Model.ElementAt(i++);
-                        <div class="col-sm-4 col-md-4 col-xs-4">
-                            <div class="product_div">
-                                <img style="height:300px; margin:auto;" src="~/img/@(p.DoorId)" class="img-responsive" alt="@p.Title" />
-                                <h4 style="text-align:center">@p.Title</h4>
-                                <p style="text-align:center; font-size:smaller;">@p.Category</p>
-                                <div style="margin-left: 10%">
-                                    <ul>
-                                        <li>@Localizer["Manufacturer"] @p.Manufacturer</li>
-                                        <li>@Localizer["Size"]: @p.Size</li>
-                                        <li>@Localizer["Color"]: @p.Colors</li>
-                                        <li>@p.Price $</li>
-                                    </ul>
-                                </div>
-                                <div align="right">
-                                    <button id="BuyButton" class="btn btn-secondary">@Localizer["Buy"]</button>
-                                    <button class="btn btn-secondary" onClick='location.href="../Product?id=@p.Id"'>@Localizer["Details"]</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        @if (i < Model.Count())
-                        {
-                            p = Model.ElementAt(i++);
-                            <div class="col-sm-4 col-md-4 col-xs-4">
-                                <div class="product_div">
-                                    <img style="height:300px; margin:auto;" src="~/img/@(p.DoorId)" class="img-responsive" alt="@p.Title" />
-                                    <h4 style="text-align:center">@p.Title</h4>
-                                    <p style="text-align:center; font-size:smaller;">@p.Category</p>
-                                    <div style="margin-left: 10%">
-                                        <ul>
-                                            <li>@Localizer["Manufacturer"] @p.Manufacturer</li>
-                                            <li>@Localizer["Size"]: @p.Size</li>
-                                            <li>@Localizer["Color"]: @p.Colors</li>
-                                            <li>@p.Price $</li>
-                                        </ul>
-                                    </div>
-                                    <div align="right">
-                                        <button id="BuyButton" class="btn btn-secondary">@Localizer["Buy"]</button>
-                                        <button class="btn btn-secondary" onClick='location.href="../Product?id=@p.Id"'>@Localizer["Details"]</button>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    }
-                </div>
-            }
-        </div>
-    </div>
-    <div class="fixedbut" id="fixedbut">
-        <div class="categories">
-            <div style="margin:10px;">
-                <button style="width:100%; white-space: normal;" class="btn btn-default" onClick='location.href="?category=Interroom Door"'>@Localizer["InterroomDoors"]</button>
-            </div>
-            <div style="margin:10px;">
-                <button style="width:100%; white-space: normal;" class="btn btn-default" onClick='location.href="?category=Steel Door"'>@Localizer["SteelDoors"]</button>
-            </div>
-            <div style="margin:10px;">
-                <button style="width:100%; white-space: normal;" class="btn btn-default" onClick='location.href="?category=Furniture"'>@Localizer["Furniture"]</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="fixedright">
-        <div class="searchbar row">
-            <form>
-                <p>
-                    <input class="form-control" style="display:inline-block; width:70%;" type="text" name="name" />
-                    <input class="btn btn-default" style="display:inline-block;" type="submit" value="@Localizer["Search"]" />
-                </p>
-            </form>
-        </div>
+        <the-shop></the-shop>
+        <app-bookstore-list></app-bookstore-list>
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-﻿import { StoreCustomer } from "./storecustomer";
+﻿
 
-let shopper = new StoreCustomer("Dima", "Shapovalov");
-shopper.showName();
+let shopper = new StoreCustomer("Shawn", "Wildermuth");
+shopper.showName(); 

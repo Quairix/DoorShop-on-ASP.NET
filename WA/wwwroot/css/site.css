@@ -1355,7 +1355,7 @@ strong {
 .header-panel .nav > li > a:hover,
 .header-panel .current-menu-item a {
     background-color: transparent;
-    color: #8faab1;
+    /*color: #8faab1;*/
 }
 
 .header-panel .site-logo {

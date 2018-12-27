@@ -1,33 +1,44 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using WA.Data;
-using WA.Services;
-using WA.ViewModels;
-using WA.Data.Entities;
-using Microsoft.AspNetCore.Http;
-using System.IO;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Security;
 using System.Security.Permissions;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Localization;
-using System;
+using WA.Data;
+using WA.Data.Entities;
+using WA.Services;
+using WA.ViewModels;
 
 namespace WA.Controllers
 {
     public class AppController : Controller
     {
+        private List<int> listId = new List<int>();
         private readonly IMailService _mailService;
         private readonly IWARepository _repository;
         private readonly WAContext _context;
         private readonly IHostingEnvironment _app;
+        private readonly UserManager<StoreUser> _userManager;
+        private readonly IMapper _mapper;
 
-        public AppController(IMailService mailService, IWARepository repository, WAContext context, IHostingEnvironment app)
+        public AppController(IMailService mailService, IWARepository repository,
+            IMapper mapper, WAContext context, IHostingEnvironment app,
+            UserManager<StoreUser> userManager)
         {
             _mailService = mailService;
-             _repository = repository;
+            _repository = repository;
             _context = context;
+            _mapper = mapper;
             _app = app;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -42,7 +53,7 @@ namespace WA.Controllers
         [HttpPost("Contact")]
         public IActionResult Contact(ContactViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 //send the message
                 _mailService.SendMessage("example@mail.ru", $"From: {model.Email}, Message: {model.Message}");
@@ -66,27 +77,9 @@ namespace WA.Controllers
         [HttpGet("Shop")]
         public IActionResult Shop()
         {
-            string category = Request.Query["category"];
-            if (category == null)
-            {
-                string name = Request.Query["name"];
-                if (name == null)
-                {
-                    var results = _repository.GetAllProducts();
-                    return View(results);
-                }
-                else
-                {
-                    var results = _repository.GetProductsByName(name);
-                    return View(results);
-                }
-            }
-            else
-            {
-                var results = _repository.GetProductsByCategory(category);
-                return View(results);
-            }
+            return View();
         }
+
         [HttpPost]
         public IActionResult SetLanguage(string culture, string returnUrl)
         {
@@ -128,7 +121,7 @@ namespace WA.Controllers
                     model.DoorId = upload.FileName;
                     _context.Products.Add(model);
                     _context.SaveChanges();
-                    ViewBag.UserMessage = "The product has been added.";
+                    ViewBag.UserMessage = "Товар добавлен.";
                 }
                 else
                 {
@@ -142,29 +135,29 @@ namespace WA.Controllers
                         noOut = newFile1.Exists;
                     } while (noOut);
                     fileNameCut += number.ToString() + ".jpg";
-                    using (FileStream stream = new FileStream(filePath + "\\" + fileNameCut , FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite))
+                    using (FileStream stream = new FileStream(filePath + "\\" + fileNameCut, FileMode.CreateNew, FileAccess.Write, FileShare.ReadWrite))
                     {
                         await upload.CopyToAsync(stream);
                     }
                     model.DoorId = fileNameCut;
                     _context.Products.Add(model);
                     _context.SaveChanges();
-                    ViewBag.UserMessage = "The product has been added.";
+                    ViewBag.UserMessage = "Товар добавлен.";
                 }
-                    //ViewBag.UserMessage = "A file with this name already exists";
+                //ViewBag.UserMessage = "A file with this name already exists";
                 ModelState.Clear();
             }
             return View();
         }
         [Authorize]
         [HttpGet("Product")]
-        public  IActionResult Product(int? id)
+        public IActionResult Product(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product =  _repository.GetProductsById((int)id);
+            var product = _repository.GetProductsById((int)id);
             if (product == null)
             {
                 return NotFound();
@@ -179,12 +172,18 @@ namespace WA.Controllers
             var product = _repository.GetProductsById((int)id);
             if (product != null)
             {
+                //var x = _context.OrderItems.Where(p => p.Product == product).FirstOrDefault();
+                //while (x != default)
+                //{
+                //    _context.OrderItems.Remove(x);
+                //    _context.SaveChanges();
+                //    x = _context.OrderItems.Where(p => p.ProductId == product.Id).FirstOrDefault();
+                //}
+                ViewBag.RowsAffected = _context.Database.ExecuteSqlCommand("Delete FROM OrderItem WHERE ProductId = {0}", id);
                 _context.Products.Remove(product);
                 _context.SaveChanges();
             }
-            //ScriptManager.RegisterClientScriptBlock(this.GetType(), "{some text for type}", "alert('{Text come to here}'); ", true);
             return RedirectToAction("Shop", "App");
         }
-
     }
 }

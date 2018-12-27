@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
   <data name="Buy" xml:space="preserve">
     <value>Buy</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
   </data>
   <data name="Color" xml:space="preserve">
     <value>Color:</value>
@@ -137,6 +143,9 @@
   </data>
   <data name="NoDescription" xml:space="preserve">
     <value>No Description</value>
+  </data>
+  <data name="PriceUpTo" xml:space="preserve">
+    <value>Price up to</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>

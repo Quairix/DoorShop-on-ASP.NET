@@ -12,7 +12,7 @@ using WA.ViewModels;
 namespace WA.Controllers
 {
     [Route("/api/orders/{orderid}/items")]
-    [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrderItemsController : Controller
     {
         private readonly IWARepository _repository;
@@ -31,7 +31,8 @@ namespace WA.Controllers
         public IActionResult Get(int orderId)
         {
             var order = _repository.GetOrderById(User.Identity.Name, orderId);
-            if (order != null) return Ok(_mapper.Map<IEnumerable<OrderItem>, IEnumerable<OrderItemViewModel>>(order.Items));
+            if (order != null)
+                return Ok(_mapper.Map<IEnumerable<OrderItem>, IEnumerable<OrderItemViewModel>>(order.Items));
             return NotFound();
         }
         [HttpGet("{id}")]

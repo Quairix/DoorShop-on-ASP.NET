@@ -58,7 +58,7 @@ namespace WA.Data
                 .Where(o => o.Id == id && o.User.UserName == username)
                 .FirstOrDefault();
         }
-
+        
         public IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems)
         {
             if (includeItems)
@@ -115,6 +115,12 @@ namespace WA.Data
         {
             return _ctx.SaveChanges() > 0;
         }
-        
+        public IEnumerable<Product> GetProductsByPrice(int price)
+        {
+            return _ctx.Products
+                .Where(p => p.Price > price)
+                .ToList();
+        }
+
     }
 }

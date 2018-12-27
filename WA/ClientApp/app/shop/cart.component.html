@@ -1,0 +1,22 @@
+﻿  <h3>Корзина</h3>
+  <div><div>Кол-во: {{ data.order.items.length }}</div></div>
+  <div>Сумма: {{ data.order.subtotal | currency:"USD":"symbol" }}</div>
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <td>Товар</td>
+        <td>#</td>
+        <td>$</td>
+        <td>Всего</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of data.order.items">
+        <td>{{ o.productTitle }}</td>
+        <td>{{ o.quantity }}</td>
+        <td>{{ o.unitPrice | currency:"USD":"symbol" }}</td>
+        <td>{{ (o.unitPrice * o.quantity) | currency:"USD":"symbol" }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" *ngIf="data.order.items.length > 0" (click)="onCheckout()">Подтвердить</button>

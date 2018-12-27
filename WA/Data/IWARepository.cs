@@ -8,6 +8,7 @@ namespace WA.Data
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetProductsByCategory(string category);
         IEnumerable<Product> GetProductsByName(string category);
+        IEnumerable<Product> GetProductsByPrice(int price);
         IEnumerable<Order> GetAllOrders(bool includeItem);
         IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems);
         Product GetProductsById(int Id);

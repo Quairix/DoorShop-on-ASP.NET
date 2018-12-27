@@ -63,3 +63,5 @@ C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Data.Entities.Product.ru.resou
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Shop - Copy.g.cshtml.cs
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Product.en.resources
 C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\WA.Resources.Views.App.Product.ru.resources
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Shop - final.g.cshtml.cs
+C:\ASP\WA\WA\obj\Debug\netcoreapp2.1\Razor\Views\App\Cart.g.cshtml.cs

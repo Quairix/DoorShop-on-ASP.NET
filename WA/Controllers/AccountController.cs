@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -8,10 +9,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using WA.Data;
 using WA.Data.Entities;
 using WA.ViewModels;
-using Microsoft.Extensions.Configuration;
-using WA.Data;
 
 namespace WA.Controllers
 {
@@ -70,7 +70,7 @@ namespace WA.Controllers
                 }
             }
             else
-                ModelState.AddModelError("", "Failed to login");
+                ModelState.AddModelError("", "Ошибка входа");
             return View();
         }
         [HttpGet]
@@ -111,11 +111,11 @@ namespace WA.Controllers
                         {
                             ErrorString += error.Description + "\n";
                         }
-                        ViewBag.UserMessage = "Failed to register user:" + ErrorString;
+                        ViewBag.UserMessage = "Ошибка регистрации пользователя:" + ErrorString;
                     }
                     else
                     {
-                        ViewBag.UserMessage = "Registration complete.";
+                        ViewBag.UserMessage = "Регистрация завершена.";
 
                         bool x = await _roleManager.RoleExistsAsync("Users");
                         if (x)

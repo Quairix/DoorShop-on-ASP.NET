@@ -34,5 +34,6 @@ namespace WA.Controllers
                 return BadRequest("Failed to get products");
             }
         }
+
     }
 }
