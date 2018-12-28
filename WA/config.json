@@ -3,7 +3,7 @@
     "Favorite": "blue"
   },
   "ConnectionStrings": {
-    "WAConnectionString": "Server=tcp:thedoorshopdb.database.windows.net,1433;Initial Catalog=WADb;Persist Security Info=False;User ID=Quarix;Password=5101Dimon;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    "WAConnectionString": "Server=tcp:thedoorshopdb.database.windows.net,1433;Initial Catalog=WADb;Persist Security Info=False;User ID=;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
   },
   "Logging": {
     "LogLevel": {
