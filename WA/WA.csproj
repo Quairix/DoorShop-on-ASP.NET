@@ -4,12 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <LangVersion>7.1</LangVersion>
+    <UserSecretsId>0868f73b-403d-4cb4-ab8f-7f2af795a394</UserSecretsId>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\ts\main.ts" />
-    <None Include="wwwroot\ts\storecustomer.ts" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
@@ -26,10 +22,16 @@
     <Content Update="Views\App\Cabinet.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\App\Cart.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\ts\" />
+  </ItemGroup>
+
+  <Target Name="PublishScripts" BeforeTargets="BeforePublish">
+    <Exec Command="npm install" />
+    <Exec Command="gulp" />
+    <Exec Command="ng build" />
+  </Target>
   
 </Project>

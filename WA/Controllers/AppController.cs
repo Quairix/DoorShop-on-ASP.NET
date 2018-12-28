@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Security;
 using System.Security.Permissions;
@@ -21,7 +20,6 @@ namespace WA.Controllers
 {
     public class AppController : Controller
     {
-        private List<int> listId = new List<int>();
         private readonly IMailService _mailService;
         private readonly IWARepository _repository;
         private readonly WAContext _context;

@@ -1,3 +1,4 @@
 # DoorShop-on-ASP.NET
 My course project.
-Status: in development.
+Status: Release.
+https://thedoorshop.azurewebsites.net

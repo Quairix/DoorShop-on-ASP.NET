@@ -5,12 +5,17 @@
 <head>
     <meta charset="utf-8" />
     <title>TheDoorShop: @ViewBag.Title</title>
-    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
+    <environment names="Development">
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+
+    <environment names="Staging,Production">
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
 </head>
 
 <body class="page-template-default page page-id-243">
@@ -164,7 +169,7 @@
                               asp-route-returnUrl="@Context.Request.Path"
                               method="post" class="form-horizontal">
                             <div class="row">
-                                <div style="display:inline-block; width:auto; font-size:0.7rem;">Language:</div>
+                                <div style="display:inline-block; width:auto; font-size:0.7rem;">@Localizer["Lang"]:</div>
                                 <div style="display:inline-block; width:auto;">
                                     <select class="form-control form-control-sm" name="culture" onchange="this.form.submit();"
                                             asp-for="@requestCulture.RequestCulture.UICulture.Name"
@@ -188,10 +193,21 @@
             </div>
         </div>
     </div>
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="~/js/slick.js"></script>
-    <script src="~/js/theme.js"></script>
+    <environment names="Development">
+        <script src="~/lib/jquery/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="~/js/slick.js"></script>
+        <script src="~/js/theme.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-3.2.1.min.js"
+            asp-fallback-src="~/lib/jquery/jquery.min.js"
+            asp-fallback-test="window.jQuery"></script>
+        <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"></script>
+        <script src="~/dist/wa.min.js" asp-append-version="true"></script>
+    </environment>
     @RenderSection("scripts", false)
 </body>
 </html>

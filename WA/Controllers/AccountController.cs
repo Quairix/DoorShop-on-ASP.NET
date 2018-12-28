@@ -133,7 +133,7 @@ namespace WA.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(model.Username);
+                var user = await _userManager.FindByNameAsync(model.Username);
                 if (user != null)
                 {
                     var result = await _signInManager.CheckPasswordSignInAsync(user,

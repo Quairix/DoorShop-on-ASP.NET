@@ -141,6 +141,9 @@
   <data name="HomePage" xml:space="preserve">
     <value>Начальная страница</value>
   </data>
+  <data name="Lang" xml:space="preserve">
+    <value>Язык</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Войти</value>
   </data>

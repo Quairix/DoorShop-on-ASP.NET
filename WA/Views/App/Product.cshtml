@@ -20,10 +20,10 @@
             <div class="col-sm-10 col-md-10 col-xs-10 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">
                 <div class="row">
                     <div style="display:inline-block;  margin:10px;">
-                        <h3><a href="../Shop/" style="color:gray;">&lt;&lt; Back to the Shop page</a></h3>
+                        <h3><a href="../Shop/" style="color:gray;">&lt;&lt; @Localizer["Back"]</a></h3>
                     </div>
                     <div style="display:inline-block; float:right; margin:10px;">
-                        <h3>View Product: @ViewBag.Title</h3>
+                        <h3>@Localizer["ViewProduct"]: @ViewBag.Title</h3>
                     </div>
                 </div>
                 <div class="product_div">
@@ -66,7 +66,7 @@
 
                         @if (User.IsInRole("Admin"))
                         {
-                            <button type="submit" asp-for=@Model.Id class="btn btn-danger">Delete</button>
+                            <button type="submit" asp-for=@Model.Id class="btn btn-danger">@Localizer["Delete"]</button>
                         }
                         <div class="text-success">@ViewBag.UserMessage</div>
                     </form>
